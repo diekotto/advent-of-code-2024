@@ -18,11 +18,30 @@ right.sort();
 
 let totalDistance = 0;
 for (let i = 0; i < left.length; i++) {
-  if (isNaN(left[i]) || isNaN(right[i])) {
-    console.log(left[i], right[i]);
-    throw new Error(`Invalid input at line ${i + 1}`);
-  }
   const distance = Math.abs(left[i] - right[i]);
   totalDistance += distance;
 }
 console.log("Day 01, Part 1:", totalDistance);
+
+// Part 2
+const memoized = new Map();
+function getSimilarity(list, number) {
+  let count = 0;
+  for (let i = 0; i < list.length; i++) {
+    if (list[i] > number) break;
+    if (list[i] === number) count++;
+  }
+  return count * number;
+}
+
+let totalSimilarity = 0;
+for (let i = 0; i < left.length; i++) {
+  let similarity = memoized.get(left[i]);
+  if (similarity === undefined) {
+    similarity = getSimilarity(right, left[i]);
+    memoized.set(left[i], similarity);
+  }
+  totalSimilarity += similarity;
+}
+
+console.log("Day 01, Part 2:", totalSimilarity);
