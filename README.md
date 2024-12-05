@@ -43,9 +43,6 @@ npm install
 # Run a specific day's solution
 npm run solve day01
 
-# Run all solutions
-npm run solve-all
-
 # Run tests
 npm test
 ```
@@ -62,7 +59,7 @@ Each day's solution includes:
 
 ## 🌟 Progress Tracking
 
-Total stars: 0/50 ⭐
+Total stars: 2/50 ⭐
 
 ## 🤝 Contributing
 
