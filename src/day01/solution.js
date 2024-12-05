@@ -25,4 +25,4 @@ for (let i = 0; i < left.length; i++) {
   const distance = Math.abs(left[i] - right[i]);
   totalDistance += distance;
 }
-console.log("Distance:", totalDistance);
+console.log("Day 01, Part 1:", totalDistance);
