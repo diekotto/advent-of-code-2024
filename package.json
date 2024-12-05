@@ -4,6 +4,7 @@
   "description": "Advent of code 2024",
   "main": "index.js",
   "scripts": {
+    "solve": "node scripts/solve.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Diego Maroto",
