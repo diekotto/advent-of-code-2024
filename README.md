@@ -26,6 +26,7 @@ advent-of-code-2024/
 | Day                   | Part 1 | Part 2 | Solution                            | Domain Model                    |
 | --------------------- | ------ | ------ | ----------------------------------- | ------------------------------- |
 | [Day 1](./src/day01/) | ⭐     | ⭐     | [Solution](./src/day01/solution.js) | [README](./src/day01/README.md) |
+| [Day 2](./src/day02/) | ⭐     | ⭐     | [Solution](./src/day02/solution.js) | [README](./src/day02/README.md) |
 
 ## 🛠️ Tech Stack
 
@@ -54,12 +55,12 @@ Each day's solution includes:
 - Problem readme
 - Solution explanation
 - Performance considerations
-- Test cases
+- Test cases (depending on the complexity of the problem)
 - Any interesting learnings or alternative approaches
 
 ## 🌟 Progress Tracking
 
-Total stars: 2/50 ⭐
+Total stars: 4/50 ⭐
 
 ## 🤝 Contributing
 
