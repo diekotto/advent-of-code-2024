@@ -85,3 +85,104 @@ For these example lists, here is the process of finding the similarity score:
 So, for these example lists, the similarity score at the end of this process is `_31_` (`9 + 4 + 0 + 0 + 9 + 9`).
 
 Once again consider your left and right lists. _What is their similarity score?_
+
+# Day 1: Historian Hysteria - Solution Analysis
+
+## Problem Overview
+The puzzle involves comparing two lists of location IDs and performing different analyses in two parts:
+
+### Part 1: Distance Calculation
+- Compare two lists of numbers by pairing them after sorting
+- Calculate the absolute difference between each pair
+- Sum all differences to get the total distance
+
+### Part 2: Similarity Score
+- For each number in the left list, count its occurrences in the right list
+- Multiply the number by its occurrence count
+- Sum all these products to get the total similarity score
+
+## Solution Approach
+
+### Part 1: List Distance
+The solution uses a straightforward approach:
+1. Parse input into two separate arrays
+2. Sort both arrays in ascending order
+3. Iterate through both arrays simultaneously, calculating absolute differences
+4. Sum the differences
+
+```javascript
+left.sort();
+right.sort();
+let totalDistance = 0;
+for (let i = 0; i < left.length; i++) {
+  totalDistance += Math.abs(left[i] - right[i]);
+}
+```
+
+### Part 2: Similarity Score
+The solution employs memoization to optimize repeated calculations:
+1. Create a memoization map to store previously calculated similarities
+2. For each number in the left list:
+   - Check if similarity is already calculated (memoized)
+   - If not, count occurrences in right list and multiply
+   - Add to total similarity score
+
+```javascript
+const memoized = new Map();
+function getSimilarity(list, number) {
+  let count = 0;
+  for (let i = 0; i < list.length; i++) {
+    if (list[i] > number) break; // Early exit optimization
+    if (list[i] === number) count++;
+  }
+  return count * number;
+}
+```
+
+## Performance Analysis
+
+### Time Complexity
+- Part 1: O(n log n)
+  - Dominated by the initial sorting of both arrays
+  - The subsequent iteration is O(n)
+
+- Part 2: O(n * m)
+  - n = length of left array
+  - m = average search length in right array
+  - Memoization improves performance for repeated numbers
+  - Early exit when searching (break on first larger number) provides optimization
+
+### Space Complexity
+- Part 1: O(1) additional space (sorting is typically in-place)
+- Part 2: O(k) where k is the number of unique values in the left array (memoization map)
+
+### Optimizations Used
+1. **Early Exit**: In Part 2, the search stops when we find a larger number (since array is sorted)
+2. **Memoization**: Caching similarity results for repeated numbers
+3. **Array Sorting**: Enables binary search potential and early exit optimization
+
+### Potential Improvements
+1. **Binary Search**: Could implement binary search for finding occurrences in Part 2
+2. **Parallel Processing**: For very large datasets, could parallelize the similarity calculations
+3. **Streaming**: Could process input line-by-line instead of loading entire file
+4. **Pre-counting**: Could create a frequency map of right list numbers once
+
+## Memory Considerations
+- Current implementation keeps both full arrays in memory
+- For very large inputs, could implement streaming approach
+- Memoization map trades memory for speed - could be removed if memory is constrained
+
+## Trade-offs
+1. **Sorting vs No Sorting**
+   - Pros: Enables optimizations like early exit
+   - Cons: O(n log n) overhead, modifies input arrays
+
+2. **Memoization**
+   - Pros: Speeds up repeated calculations
+   - Cons: Additional memory usage
+   - Best when input has many repeated values
+
+3. **Early Exit**
+   - Pros: Reduces average case time complexity
+   - Cons: Requires sorted array
+   - Most beneficial when numbers are well-distributed
