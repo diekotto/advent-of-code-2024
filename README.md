@@ -27,6 +27,7 @@ advent-of-code-2024/
 | --------------------- | ------ | ------ | ----------------------------------- | ------------------------------- |
 | [Day 1](./src/day01/) | ⭐     | ⭐     | [Solution](./src/day01/solution.js) | [README](./src/day01/README.md) |
 | [Day 2](./src/day02/) | ⭐     | ⭐     | [Solution](./src/day02/solution.js) | [README](./src/day02/README.md) |
+| [Day 3](./src/day03/) | ⭐     | ⭐     | [Solution](./src/day03/solution.js) | [README](./src/day03/README.md) |
 
 ## 🛠️ Tech Stack
 
@@ -60,7 +61,7 @@ Each day's solution includes:
 
 ## 🌟 Progress Tracking
 
-Total stars: 4/50 ⭐
+Total stars: 6/50 ⭐
 
 ## 🤝 Contributing
 
